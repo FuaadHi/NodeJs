@@ -1,0 +1,27 @@
+<!-- ********* Header *********** -->
+<%- include("../partials/header.ejs")-%>
+
+<!-- ********NavBar ************** -->
+<%-include("../partials/navbar.ejs")-%>
+
+<div class="container">
+  <% chunk.forEach((event) => { %>
+  <div class="row mt-4">
+    <% event.forEach((event) => { %>
+    <div class="col-sm-6 col-md-4">
+      <div class="card">
+        <div class="card-header">Featured</div>
+        <div class="card-body">
+          <h5 class="card-title"><%=event.title%></h5>
+          <p class="card-text"><%=event.discreption%></p>
+          <a href="<%= "/events/" + event.id %> " class="btn btn-primary">Go somewhere</a>
+          <p><%=event.location%></p>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+  <% }) %>
+</div>
+<!-- ********** Footer*********** -->
+<%-include("../partials/footer.ejs")-%>
