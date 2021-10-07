@@ -1,0 +1,22 @@
+<!-- ********* Header *********** -->
+<%- include("../partials/header.ejs")-%>
+
+<!-- ********NavBar ************** -->
+<%-include("../partials/navbar.ejs")-%>
+
+<!-- ******** Page ********** -->
+<h2 class="display-4 text-center mt-4">Profile</h2>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <img src="/images/profile.jpg" alt="" />
+    </div>
+    <div class="col-md-9 offset-md-3">
+      <% //errors.forEach((err) => { %>
+      <div class="alert alert-danger"><%=// err.msg %></div>
+      <% //}) %>
+    </div>
+  </div>
+</div>
+<!-- ********** Footer*********** -->
+<%-include("../partials/footer.ejs")-%>

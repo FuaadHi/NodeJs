@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+      }
+      body .container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 22px;
+      }
+      .container form {
+        width: 88%;
+        border: 1px solid #444;
+        border-radius: 22px;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-between;
+      }
+      .container form textarea {
+        width: 77%;
+        font-size: 33px;
+        outline: none;
+        border: none;
+        padding: 11px;
+        padding-left: 6%;
+      }
+      .container form button {
+        font-size: 33px;
+        margin-left: 1%;
+        width: 11%;
+        border-right: none;
+        border-bottom: none;
+        border-top: none;
+        padding-left: 1%;
+      }
+      @media (max-width: 844px) {
+        .container form button,
+        .container form textarea {
+          font-size: 22px;
+        }
+      }
+      @media (max-width: 755px) {
+        .container form button {
+          margin-right: 4%;
+        }
+      }
+      @media (max-width: 511px) {
+        .container form button {
+          margin-right: 7%;
+        }
+      }
+      @media (max-width: 411px) {
+        .container form button {
+          margin-right: 9%;
+          font-size: 18px;
+        }
+        .container form {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="messege-container">messegwe div</div>
+      <form action="" id="send-container">
+        <textarea name="messege-input" id="messege-input" rows="1"></textarea>
+        <button type="submit" id="send-button">Send</button>
+      </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      let messegeForm = document.getElementById("send-container");
+      const messegeInput = document.getElementById("messege-input");
+      const messegeContainer = document.getElementById("messege-container");
+
+      const socket = io();
+      socket.on("chat-messege", (data) => {
+        let messegeElement = document.createElement("div");
+        messegeElement.innerText = data;
+        messegeContainer.append(messegeElement);
+      });
+
+      messegeForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const messege = messegeInput.value;
+        socket.emit("send-chat-messege", messege);
+        messegeInput.value = "";
+      });
+    </script>
+    <!-- <script defer src="/script.js"></script> -->
+  </body>
+</html>

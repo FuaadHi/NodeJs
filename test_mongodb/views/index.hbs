@@ -1,0 +1,136 @@
+<div class="row mt-4">
+  <div class="col-sm-3">
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+      <div class="card-header">Insert A New User</div>
+      <div class="card-body text-dark">
+        <form action="/insert" method="POST">
+          <div class="form-group">
+            <label for="exampleInputEmail1">User Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter User-name"
+              name="userName"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter Email"
+              name="userEmail"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+      <div class="card-header">Find All Users: </div>
+      <div class="card-body text-dark">
+        <form action="/getusers" method="Get">
+          {{#each items}}
+            <div>
+              ID:
+              {{this._id}}
+            </div>
+            <div>
+              userName:
+              {{this.userName}}
+            </div>
+            <div>
+              userEmail:
+              {{this.userMail}}
+            </div>
+            <hr />
+          {{/each}}
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+      <div class="card-header">Update(edit) A present User: </div>
+      <div class="card-body text-dark">
+        <form action="/update" method="POST">
+          <div class="form-group">
+            <label for="Id">ID: </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter User-name"
+              name="ID"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="user-name">User Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter User-name"
+              name="userName"
+              id="user-name"
+              aria-describedby="emailHelp"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="user-email">User Email</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter Email"
+              name="userEmail"
+              id="user-email"
+            />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card border-dark mb-3" style="max-width: 18rem;">
+      <div class="card-header">Delete A present User: </div>
+      <div class="card-body text-dark">
+        <form action="/delete" method="POST">
+          <div class="form-group">
+            <label for="Id">ID: </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter User-name"
+              name="ID"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
